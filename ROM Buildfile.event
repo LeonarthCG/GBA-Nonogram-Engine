@@ -1,0 +1,25 @@
+//making the header
+
+#define armJump(label) "WORD 0xEA000000 + (((label-currentoffset-8)/4)&0xFFFFFF)"
+
+ORG $0
+armJump(romStart) //arm instruction, jump to 0xC0
+#incbin "bitmap.bin" //displayed, then checked on bootup, gba hangs without this
+BYTE 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 //uppercase ascii, max 12 characters
+BYTE 0x20 0x20 0x20 0x20 //uppercase ascii, 4 characters
+BYTE 0x20 0x20 //uppercase ascii, 2 characters
+BYTE $96 //fixed value
+BYTE 0 //main unit, 0 for gba
+BYTE 0 //device type
+BYTE 0 0 0 0 0 0 0 //some empty bytes
+BYTE 0 //software version
+BYTE $6C //checksum of bytes A0 to BC, ((0 - each byte) - $19 )&0xFF
+SHORT 0 //some empty bytes
+
+//the strings for the header
+PUSH; ORG $A0; String(NONOGRAM GBA); POP
+PUSH; ORG $AC; String(NONO); POP
+PUSH; ORG $B0; String(00); POP
+
+romStart:
+#inctext lyn "ASM\boot.elf" //change to thumb mode
