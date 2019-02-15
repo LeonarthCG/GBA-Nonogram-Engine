@@ -52,26 +52,52 @@ ldrh	r3,[r0,#2]
 add	r0,#4
 bl	loadData
 
+@load the data for the puzzle
 mov	r0,r4
 bl	loadPuzzle
 
+@draw the grid and change the size
 mov	r0,r4
 bl	drawGrid
 
-swi	#5
-
+@calculate hints
 mov	r0,r4
 bl	getHints
 
+@and draw them
+swi	#5		@make sure the grid was drawn to the screen first
 mov	r0,r4
 ldr	r1,=#0x02000200
 bl	drawHints
 
+@draw the color selection
+swi	#5		@make sure the hints were drawn
+ldr	r0,=#0x0200016C
+mov	r1,#0
+strb	r1,[r0]		@set selected color to 0
+mov	r0,r4
+ldr	r1,=#0x02000200
+bl	drawColors
+
+@draw cursor so that it exists for the fade
+bl	drawCursor
 swi	#5
 
+@start fade
 bl	fadeIn
 
+@main loop
 self:
+@handle key input for moving the cursor
+bl	cursorMovement
+@redraw the cursor
+bl	drawCursor
+@handle key input for color change
+bl	colorChange
+@draw the color selection
+mov	r0,r4
+ldr	r1,=#0x02000200
+bl	drawColors
 swi	#5
 b	self
 

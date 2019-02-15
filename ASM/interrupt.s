@@ -37,7 +37,6 @@ b	End
 
 @if vblank, just acknowledge and return
 wasvblank:
-push	{lr}
 push	{r4-r7}
 mov	r0,#1
 ldr	r1,=#0x04000200		@mark the bit for the interrupt
@@ -125,8 +124,7 @@ lsl	r6,#1
 cmp	r6,r5
 bls	keyInputLoop
 pop	{r4-r7}
-pop	{r0}
-bx	r0
+b	End
 
 End:
 pop	{r0,r4}

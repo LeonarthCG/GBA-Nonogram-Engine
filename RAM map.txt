@@ -1,0 +1,80 @@
+02000000  List  Source puzzle data
+                15 rows of 20 bytes
+
+02000130  Byte  A Button pressed
+02000131  Byte  A Button held
+02000132  Byte  A Button released
+02000133  Byte  A Button held duration
+
+02000134  Byte  B Button pressed
+02000135  Byte  B Button held
+02000136  Byte  B Button released
+02000137  Byte  B Button held duration
+
+02000138  Byte  Select Button pressed
+02000139  Byte  Select Button held
+0200013A  Byte  Select Button released
+0200013B  Byte  Select Button held duration
+
+0200013C  Byte  Start Button pressed
+0200013D  Byte  Start Button held
+0200013E  Byte  Start Button released
+0200013F  Byte  Start Button held duration
+
+02000140  Byte  Right Button pressed
+02000141  Byte  Right Button held
+02000142  Byte  Right Button released
+02000143  Byte  Right Button held duration
+
+02000144  Byte  Left Button pressed
+02000145  Byte  Left Button held
+02000146  Byte  Left Button released
+02000147  Byte  Left Button held duration
+
+02000148  Byte  Up Button pressed
+02000149  Byte  Up Button held
+0200014A  Byte  Up Button released
+0200014B  Byte  Up Button held duration
+
+0200014C  Byte  Down Button pressed
+0200014D  Byte  Down Button held
+0200014E  Byte  Down Button released
+0200014F  Byte  Down Button held duration
+
+02000150  Byte  R Button pressed
+02000151  Byte  R Button held
+02000152  Byte  R Button released
+02000153  Byte  R Button held duration
+
+02000154  Byte  L Button pressed
+02000155  Byte  L Button held
+02000156  Byte  L Button released
+02000157  Byte  L Button held duration
+
+02000160  Byte  Cursor Tile X
+02000161  Byte  Cursor Tile Y
+02000162  Byte  Puzzle Width
+02000163  Byte  Puzzle Height
+02000164  Word  Timer
+02000168  Word  Options
+02000168  Bit01 isTimerActive
+0200016C  Byte  Current Color
+0200016D  Byte  Number of Colors
+
+02000200  List  Hint data (rows)
+                20 bytes for every row, 1 byte color 1 byte size
+02000400  List  Hint data (columns)
+                20 bytes for every column, 1 byte color 1 byte size
+		
+02000600  List  Player Hint data (rows)
+                20 bytes for every row, 1 byte color 1 byte size
+02000800  List  Player Hint data (columns)
+                20 bytes for every column, 1 byte color 1 byte size
+
+02000A00  List  Player data
+                15 rows of 40 bytes
+		Each tile has a byte for color and a byte for type (square, X)
+02000D00  List  Theory data
+                15 rows of 40 bytes
+		Each tile has a byte for color and a byte for type (square, X)
+		

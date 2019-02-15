@@ -10,6 +10,14 @@ mov	r5,r1
 ldrh	r6,[r4,#0]
 ldrh	r7,[r4,#2]
 
+@set width and height, reset cursor position
+ldr	r0,=#0x02000160
+mov	r1,#0
+strb	r1,[r0]
+strb	r1,[r0,#1]
+strb	r6,[r0,#2]
+strb	r7,[r0,#3]
+
 ldr	r4,[r4,#4]
 ldr	r5,=#0x02000000
 loadLoop:

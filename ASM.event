@@ -48,6 +48,42 @@ ALIGN 4
 drawHints:
 #inctext lyn "ASM/Puzzle/drawHints.elf" //given pointer to hints in ram, draw them to the grid
 
+ALIGN 4
+cursorMovement:
+#inctext lyn "ASM/Puzzle/cursorMovement.elf" //check if the cursor has to be moved this frame
+
+ALIGN 4
+drawCursor:
+#inctext lyn "ASM/Puzzle/drawCursor.elf" //draw sprites for the cursor
+
+ALIGN 4
+drawColors:
+#inctext lyn "ASM/Puzzle/drawColors.elf" //draw the color selection
+
+ALIGN 4
+colorChange:
+#inctext lyn "ASM/Puzzle/colorChange.elf" //check if colors should change this frame
+
+
+
+//- Buttons - 
+
+ALIGN 4
+checkPressed:
+#inctext lyn "ASM/Buttons/checkPressed.elf" //check if button was just pressed
+
+ALIGN 4
+checkReleased:
+#inctext lyn "ASM/Buttons/checkReleased.elf" //check if button was just released
+
+ALIGN 4
+checkHeld:
+#inctext lyn "ASM/Buttons/checkHeld.elf" //check if button has been held for long enough
+
+ALIGN 4
+checkHeldOrPressed:
+#inctext lyn "ASM/Buttons/checkHeldOrPressed.elf" //check if either button was just pressed or it has been held for long enough
+
 
 
 //- Test -

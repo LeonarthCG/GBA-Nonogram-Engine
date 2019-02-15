@@ -1,6 +1,6 @@
 ALIGN 4
 gridIMG:
-SHORT 0 224
+SHORT 0 256
 #incbin "Graphics/gridTiles.img.bin"
 
 ALIGN 4
