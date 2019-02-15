@@ -36,3 +36,21 @@ WORD $0600F000
 WORD $0600F800
 
 #include "ASM.event"
+
+#include "Graphics.event"
+
+ALIGN 4
+puzzletest:
+SHORT 9 9
+POIN puzzletestpuzzle
+POIN puzzletestpalette
+POIN gridPALGreen
+
+ALIGN 4
+puzzletestpuzzle:
+#incbin "Puzzles/test.img.bin"
+
+ALIGN 4
+puzzletestpalette:
+SHORT 0 8
+#incbin "Puzzles/test.pal.bin"

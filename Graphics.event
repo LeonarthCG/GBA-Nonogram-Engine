@@ -1,0 +1,24 @@
+ALIGN 4
+gridIMG:
+SHORT 0 224
+#incbin "Graphics/gridTiles.img.bin"
+
+ALIGN 4
+gridTSA:
+SHORT 0 320
+#incbin "Graphics/grid.tsa.bin"
+
+ALIGN 4
+gridCursorIMG:
+SHORT 0 768
+#incbin "Graphics/gridCursor.img.bin"
+
+ALIGN 4
+puzzleColors:
+SHORT 0 2112
+#incbin "Graphics/puzzleColors.img.bin"
+
+ALIGN 4
+gridPALGreen:
+SHORT 0 8
+#incbin "Graphics/gridTilesGreen.pal.bin"

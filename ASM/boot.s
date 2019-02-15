@@ -22,9 +22,11 @@ ldr	r0,=#0x03007FFC
 ldr	r1,=interrupt
 str	r1,[r0]		@set the interrupt routine
 
-mov	r1,#0x10
-add	r2,#4
-strb	r1,[r0,r2]	@start with a black screen
+ldr	r0,=#0x04000050
+mov	r1,#0xFF
+strb	r1,[r0]
+mov	r1,#0x1F
+strb	r1,[r0,#4]	@start with a black screen
 
 @turn on bg layers
 ldr	r0,=#0x04000000

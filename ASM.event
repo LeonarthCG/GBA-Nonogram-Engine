@@ -1,4 +1,4 @@
-//MAIN
+//- Main -
 
 ALIGN 4
 boot:
@@ -9,10 +9,12 @@ interrupt:
 #inctext lyn "ASM/interrupt.elf" //handle interrupts and key pressed
 
 ALIGN 4
-testPuzzle:
-#inctext lyn "ASM/testPuzzle.elf"
+loadData:
+#inctext lyn "ASM/loadData.elf" //load ammount of words from source to destination
 
-//Screen
+
+
+//- Screen - 
 
 ALIGN 4
 fadeIn:
@@ -21,3 +23,35 @@ fadeIn:
 ALIGN 4
 fadeOut:
 #inctext lyn "ASM/Screen/fadeOut.elf" //remove any current blending then fade into black
+
+
+
+//- Puzzle - 
+
+ALIGN 4
+puzzleMain:
+#inctext lyn "ASM/Puzzle/puzzleMain.elf" //main gameplay loop
+
+ALIGN 4
+loadPuzzle:
+#inctext lyn "ASM/Puzzle/loadPuzzle.elf" //given puzzle, read graphics and produce puzzle data
+
+ALIGN 4
+drawGrid:
+#inctext lyn "ASM/Puzzle/drawGrid.elf" //given puzzle, draw grid for the corresponding size
+
+ALIGN 4
+getHints:
+#inctext lyn "ASM/Puzzle/getHints.elf" //given puzzle, make a list of the hints and write them to ram
+
+ALIGN 4
+drawHints:
+#inctext lyn "ASM/Puzzle/drawHints.elf" //given pointer to hints in ram, draw them to the grid
+
+
+
+//- Test -
+
+ALIGN 4
+testPuzzle:
+#inctext lyn "ASM/testPuzzle.elf"
