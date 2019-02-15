@@ -3,7 +3,7 @@
 #define armJump(label) "WORD 0xEA000000 + (((label-currentoffset-8)/4)&0xFFFFFF)"
 
 ORG $0
-armJump(romStart) //arm instruction, jump to 0xC0
+armJump(boot) //arm instruction, jump to 0xC0
 #incbin "bitmap.bin" //displayed, then checked on bootup, gba hangs without this
 BYTE 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 0x20 //uppercase ascii, max 12 characters
 BYTE 0x20 0x20 0x20 0x20 //uppercase ascii, 4 characters
@@ -21,5 +21,18 @@ PUSH; ORG $A0; String(NONOGRAM GBA); POP
 PUSH; ORG $AC; String(NONO); POP
 PUSH; ORG $B0; String(00); POP
 
-romStart:
-#inctext lyn "ASM\boot.elf" //change to thumb mode
+ALIGN 4
+bgTilemapsBuffer:
+WORD $03000000
+WORD $03000800
+WORD $03001000
+WORD $03001800
+
+ALIGN 4
+bgTilemaps:
+WORD $0600E000
+WORD $0600E800
+WORD $0600F000
+WORD $0600F800
+
+#include "ASM.event"

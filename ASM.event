@@ -1,0 +1,23 @@
+//MAIN
+
+ALIGN 4
+boot:
+#inctext lyn "ASM\boot.elf" //change to thumb mode and set up some stuff
+
+ALIGN 4
+interrupt:
+#inctext lyn "ASM/interrupt.elf" //handle interrupts and key pressed
+
+ALIGN 4
+testPuzzle:
+#inctext lyn "ASM/testPuzzle.elf"
+
+//Screen
+
+ALIGN 4
+fadeIn:
+#inctext lyn "ASM/Screen/fadeIn.elf" //make the screen black then fade in
+
+ALIGN 4
+fadeOut:
+#inctext lyn "ASM/Screen/fadeOut.elf" //remove any current blending then fade into black
