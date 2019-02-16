@@ -5,6 +5,21 @@ push	{r4-r7}
 
 mov	r4,r0
 
+@clean some ram stuff
+mov	r0,#0
+ldr	r1,=#0x02000000
+ldr	r2,=#0x80
+bl	fillDest
+mov	r0,#0
+ldr	r1,=#0x02000160
+ldr	r2,=#0x300
+bl	fillDest
+mov	r0,#0
+ldr	r1,=bgTilemapsBuffer
+ldr	r1,[r1]
+ldr	r2,=#0x600
+bl	fillDest
+
 @load grid stuff
 ldr	r0,=gridIMG
 ldr	r1,=#0x06000000
@@ -86,8 +101,7 @@ swi	#5
 @start fade
 bl	fadeIn
 
-@main loop
-self:
+Main:
 @check if current action should stop
 bl	stopAction
 
@@ -114,9 +128,106 @@ bl	applyAction
 @update graphics for squares and crosses
 bl	drawSquares
 
+@erase player hints
+mov	r0,#0
+ldr	r1,=#0x02000600
+ldr	r2,=#0x100
+bl	fillDest
+
+@update player hints
+mov	r0,r4
+ldr	r1,=#0x02000A00
+bl	getPlayerHints
+
+@compare them to source puzzle hints
+ldr	r0,=#0x02000200
+ldr	r1,=#0x02000600
+bl	compareHints
+cmp	r0,#0
+bne	win
+
 swi	#5
-b	self
+b	Main
 
 pop	{r4-r7}
 pop	{r0}
 bx	r0
+
+win:
+@erase cursor
+mov	r0,#0
+ldr	r1,=#0x07000000
+ldr	r2,=#0x100
+bl	fillDest
+@update tiles a few times
+bl	drawSquares
+swi	#5
+bl	drawSquares
+swi	#5
+bl	drawSquares
+swi	#5
+bl	drawSquares
+swi	#5
+bl	drawSquares
+swi	#5
+bl	drawSquares
+swi	#5
+bl	drawSquares
+swi	#5
+bl	drawSquares
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+swi	#5
+bl	fadeOut
+winloop:
+swi	#5
+b	winloop

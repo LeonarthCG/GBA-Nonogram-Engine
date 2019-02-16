@@ -12,6 +12,10 @@ ALIGN 4
 loadData:
 #inctext lyn "ASM/loadData.elf" //load ammount of words from source to destination
 
+ALIGN 4
+fillDest:
+#inctext lyn "ASM/fillDest.elf" //fill destination with value specified
+
 
 
 //- Screen - 
@@ -43,6 +47,14 @@ drawGrid:
 ALIGN 4
 getHints:
 #inctext lyn "ASM/Puzzle/getHints.elf" //given puzzle, make a list of the hints and write them to ram
+
+ALIGN 4
+getPlayerHints:
+#inctext lyn "ASM/Puzzle/getPlayerHints.elf" //given player data, make a list of the hints and write them to ram
+
+ALIGN 4
+compareHints:
+#inctext lyn "ASM/Puzzle/compareHints.elf" //check puzzle hints against player hints
 
 ALIGN 4
 drawHints:
