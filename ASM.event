@@ -64,6 +64,22 @@ ALIGN 4
 colorChange:
 #inctext lyn "ASM/Puzzle/colorChange.elf" //check if colors should change this frame
 
+ALIGN 4
+stopAction:
+#inctext lyn "ASM/Puzzle/stopAction.elf" //check if action should stop this frame
+
+ALIGN 4
+changeAction:
+#inctext lyn "ASM/Puzzle/changeAction.elf" //check if action should change this frame
+
+ALIGN 4
+applyAction:
+#inctext lyn "ASM/Puzzle/applyAction.elf" //check if action should be applied this frame
+
+ALIGN 4
+drawSquares:
+#inctext lyn "ASM/Puzzle/drawSquares.elf" //update squares and crosses
+
 
 
 //- Buttons - 

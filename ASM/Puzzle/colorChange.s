@@ -1,6 +1,12 @@
 .thumb
 push	{lr}
 push	{r4-r7}
+@if there is a current action do nothing
+ldr	r0,=#0x0200016E
+ldrb	r1,[r0]
+cmp	r1,#0
+bne	End
+
 mov	r4,#0
 mov	r5,#0
 @check if both are pressed at the same time

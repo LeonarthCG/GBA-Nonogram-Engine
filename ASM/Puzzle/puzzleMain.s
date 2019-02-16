@@ -88,16 +88,32 @@ bl	fadeIn
 
 @main loop
 self:
+@check if current action should stop
+bl	stopAction
+
 @handle key input for moving the cursor
 bl	cursorMovement
+
 @redraw the cursor
 bl	drawCursor
+
 @handle key input for color change
 bl	colorChange
+
 @draw the color selection
 mov	r0,r4
 ldr	r1,=#0x02000200
 bl	drawColors
+
+@check if current action should change
+bl	changeAction
+
+@check if current action should be applied
+bl	applyAction
+
+@update graphics for squares and crosses
+bl	drawSquares
+
 swi	#5
 b	self
 

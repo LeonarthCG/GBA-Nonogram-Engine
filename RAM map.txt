@@ -60,6 +60,8 @@
 02000168  Bit01 isTimerActive
 0200016C  Byte  Current Color
 0200016D  Byte  Number of Colors
+0200016E  Byte  Current Cursor Action
+0200016F  Byte  Current Cursor Action Color (color that was active when action was changed)
 
 02000200  List  Hint data (rows)
                 20 bytes for every row, 1 byte color 1 byte size
