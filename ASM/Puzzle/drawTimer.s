@@ -19,7 +19,6 @@ add	r4,#2
 bne	findTileLoop
 stopTileLoop:
 sub	r4,#8
-sub	r4,#0x40
 sub	r6,r4,r6
 add	r5,r6
 
@@ -54,19 +53,29 @@ bne	odd
 
 @draw the ":"
 even:
-add	r5,#0xC2
-ldr	r0,=#0x16E
+add	r5,#0x82
+ldr	r0,=#0x14E
 strh	r0,[r5]
 add	r0,#1
 strh	r0,[r5,#2]
+add	r0,#0x1F
+mov	r2,#0x40
+strh	r0,[r5,r2]
+add	r0,#1
+mov	r2,#0x42
+strh	r0,[r5,r2]
 b	afterdots
 
 @erase the ":"
 odd:
-add	r5,#0xC2
+add	r5,#0x82
 mov	r0,#0
 strh	r0,[r5]
 strh	r0,[r5,#2]
+mov	r2,#0x40
+strh	r0,[r5,r2]
+add	r2,#2
+strh	r0,[r5,r2]
 b	afterdots
 
 @draw the time
