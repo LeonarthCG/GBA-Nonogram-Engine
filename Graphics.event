@@ -14,6 +14,11 @@ SHORT 0 768
 #incbin "Graphics/gridCursor.img.bin"
 
 ALIGN 4
+gridTimeIMG:
+SHORT 0 512
+#incbin "Graphics/timeTiles.img.bin"
+
+ALIGN 4
 puzzleColors:
 SHORT 0 2112
 #incbin "Graphics/puzzleColors.img.bin"

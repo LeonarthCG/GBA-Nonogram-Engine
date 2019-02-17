@@ -6,7 +6,7 @@ push	{r4-r7}
 ldr	r4,=#0x07000000
 ldr	r1,=#0x4000
 strh	r1,[r4,#2]
-ldr	r1,=#0x0C01
+ldr	r1,=#0x0001
 strh	r1,[r4,#4]
 ldr	r5,=bgTilemapsBuffer
 ldr	r5,[r5]
@@ -72,7 +72,7 @@ ldrh	r0,[r4]
 strh	r0,[r4,#8]
 ldrh	r0,[r4,#2]
 strh	r0,[r4,#10]
-ldr	r0,=#0x0C05
+ldr	r0,=#0x0005
 strh	r0,[r4,#12]
 dontdrawsquare:
 @move the bars
@@ -87,7 +87,7 @@ add	r2,#2
 ldr	r6,=#0xC000
 strh	r6,[r4,r2]
 add	r2,#2
-ldr	r7,=#0x0C20
+ldr	r7,=#0x0020
 strh	r7,[r4,r2]
 add	r2,#4
 strh	r5,[r4,r2]
@@ -122,7 +122,7 @@ ldr	r1,=#0xC000
 orr	r6,r1
 strh	r6,[r4,r2]
 add	r2,#2
-ldr	r7,=#0x0C40
+ldr	r7,=#0x0040
 strh	r7,[r4,r2]
 add	r2,#4
 add	r5,#64

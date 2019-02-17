@@ -17,22 +17,49 @@ cmp	r0,#1
 bne	notvblank
 bl	wasvblank
 notvblank:
-mov	r0,#8
+mov	r0,#0x8
 and	r0,r4
-cmp	r0,#8
+cmp	r0,#0x8
 bne	notcounter0
 bl	wascounter0
 notcounter0:
-mov	r0,#16
+mov	r0,#0x10
 and	r0,r4
-cmp	r0,#16
+cmp	r0,#0x10
 bne	notcounter1
 bl	wascounter1
 notcounter1:
+mov	r0,#0x20
+and	r0,r4
+cmp	r0,#0x20
+bne	notcounter2
+bl	wascounter2
+notcounter2:
+mov	r0,#0x40
+and	r0,r4
+cmp	r0,#0x40
+bne	notcounter3
+bl	wascounter3
+notcounter3:
 b	End
 
 wascounter0:
 wascounter1:
+wascounter2:
+b	End
+
+wascounter3:
+@mark the interrupt
+mov	r0,#0x40
+ldr	r1,=#0x04000200		@mark the bit for the interrupt
+strh	r0,[r1,#2]
+ldr	r1,=#0x03007FF8		@mark the bit for the interrupt
+strh	r0,[r1]
+@increase the second counter
+ldr	r0,=#0x02000160
+ldr	r1,[r0,#4]
+add	r1,#1
+str	r1,[r0,#4]
 b	End
 
 @if vblank, just acknowledge and return

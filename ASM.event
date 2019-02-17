@@ -92,6 +92,14 @@ ALIGN 4
 drawSquares:
 #inctext lyn "ASM/Puzzle/drawSquares.elf" //update squares and crosses
 
+ALIGN 4
+drawPreview:
+#inctext lyn "ASM/Puzzle/drawPreview.elf" //draw the preview
+
+ALIGN 4
+drawTimer:
+#inctext lyn "ASM/Puzzle/drawTimer.elf" //draw and update the timer
+
 
 
 //- Buttons - 

@@ -52,6 +52,12 @@ ldrh	r2,[r0]
 ldrh	r3,[r0,#2]
 add	r0,#4
 bl	loadData
+ldr	r0,=gridTimeIMG
+ldr	r1,=#0x06002800
+ldrh	r2,[r0]
+ldrh	r3,[r0,#2]
+add	r0,#4
+bl	loadData
 
 @and the numbers
 ldr	r0,=puzzleColors
@@ -98,10 +104,24 @@ bl	drawColors
 bl	drawCursor
 swi	#5
 
+@draw the puzzle preview tiles to the background
+bl	drawPreview
+
+@reset the seconds counter
+ldr	r0,=#0x02000160
+mov	r1,#0
+str	r1,[r0,#4]
+
+@draws/updates the timer
+bl	drawTimer
+
 @start fade
 bl	fadeIn
 
 Main:
+@draws/updates the timer
+bl	drawTimer
+
 @check if current action should stop
 bl	stopAction
 

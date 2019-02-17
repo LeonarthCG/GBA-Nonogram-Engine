@@ -44,23 +44,29 @@ strb	r6,[r0,#1]
 cmp	r6,#1
 bls	End
 
-@draw the colors
+@draw L and R
 mov	r4,r5
 mov	r7,r6
-mov	r0,#0x1C
-strh	r0,[r4]
-add	r4,#2
-lsl	r1,r7,#1
-mov	r0,#0x1E
-strh	r0,[r4,r1]
-
-@draw the background squares the colors go in
 ldr	r0,=bgTilemapsBuffer
 ldr	r0,[r0,#4]
 sub	r4,r0
 ldr	r0,=bgTilemapsBuffer
 ldr	r0,[r0]
 add	r4,r0
+mov	r0,#0x1C
+strh	r0,[r4]
+add	r4,#2
+lsl	r1,r7,#1
+ldrh	r0,[r4,r1]
+cmp	r0,#0x11
+beq	borderR
+mov	r0,#0x1E
+b	storeR
+borderR:
+mov	r0,#0x1B
+storeR:
+strh	r0,[r4,r1]
+@draw the background squares the colors go in
 mov	r3,#0
 ldr	r0,=#0x0200016C
 ldrb	r2,[r0]
@@ -77,6 +83,7 @@ sub	r7,#1
 cmp	r7,#0
 bne	drawColorTilesLoop
 
+@draw the colors
 ldr	r0,=#0x0200016C
 mov	r4,#0
 ldrb	r7,[r0]

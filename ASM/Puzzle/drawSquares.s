@@ -15,7 +15,7 @@ bne	findTileLoop
 stopTileLoop:
 sub	r1,r0
 ldr	r2,=bgTilemapsBuffer
-ldr	r2,[r2,#8]
+ldr	r2,[r2,#4]
 add	r6,r2,r1
 
 @for every tile, check what we want it to be, then check what it currently is
