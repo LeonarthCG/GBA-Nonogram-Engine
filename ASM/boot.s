@@ -56,6 +56,6 @@ mov	r1,#0x08
 @strb	r1,[r0,#8]
 @strb	r1,[r0,#10]
 @strb	r1,[r0,#12]
-@strb	r1,[r0,#14]
+strb	r1,[r0,#14]
 
 bl	testPuzzle

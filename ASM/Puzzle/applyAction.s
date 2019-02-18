@@ -38,6 +38,8 @@ cmp	r0,#0
 bne	End
 strb	r4,[r6]
 strb	r5,[r6,#1]
+@update the puzzle preview
+bl	updatePreview
 b	End
 
 placeCross:
@@ -53,4 +55,6 @@ erase:
 mov	r0,#0
 strb	r0,[r6]
 strb	r0,[r6,#1]
+@update the puzzle preview
+bl	updatePreview
 b	End

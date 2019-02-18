@@ -97,6 +97,10 @@ drawPreview:
 #inctext lyn "ASM/Puzzle/drawPreview.elf" //draw the preview
 
 ALIGN 4
+updatePreview:
+#inctext lyn "ASM/Puzzle/updatePreview.elf" //update preview with the new pixel
+
+ALIGN 4
 drawTimer:
 #inctext lyn "ASM/Puzzle/drawTimer.elf" //draw and update the timer
 

@@ -174,6 +174,10 @@ pop	{r0}
 bx	r0
 
 win:
+@stop timer
+ldr	r0,=#0x04000100
+mov	r1,#0xC7
+strh	r1,[r0,#0xE]
 @erase cursor
 mov	r0,#0
 ldr	r1,=#0x07000000
