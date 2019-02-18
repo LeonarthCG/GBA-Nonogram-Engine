@@ -11,8 +11,10 @@ ldr	r0,=bgTilemapsBuffer
 ldr	r4,[r0]
 mov	r6,r4
 ldr	r5,[r0,#4]
+mov	r3,#0xFF
 findTileLoop:
 ldrh	r2,[r4]
+and	r2,r3
 cmp	r2,#0x12
 beq	stopTileLoop
 add	r4,#2
@@ -23,7 +25,7 @@ sub	r6,r4,r6
 add	r5,r6
 
 @draw Time
-ldr	r0,=#0x14A
+ldr	r0,=#0x214A
 strh	r0,[r4]
 add	r0,#1
 strh	r0,[r4,#2]
@@ -54,7 +56,7 @@ bne	odd
 @draw the ":"
 even:
 add	r5,#0x82
-ldr	r0,=#0x14E
+ldr	r0,=#0x214E
 strh	r0,[r5]
 add	r0,#1
 strh	r0,[r5,#2]
@@ -81,8 +83,8 @@ b	afterdots
 @draw the time
 afterdots:
 ldr	r0,=#3600
-ldr	r5,=#0x140
-ldr	r6,=#0x160
+ldr	r5,=#0x2140
+ldr	r6,=#0x2160
 cmp	r7,r0
 blo	notMaxed
 mov	r7,r0

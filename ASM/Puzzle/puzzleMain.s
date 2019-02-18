@@ -34,7 +34,7 @@ ldrh	r3,[r0,#2]
 add	r0,#4
 bl	loadData
 ldr	r0,[r4,#12]
-ldr	r1,=#0x05000000
+ldr	r1,=#0x05000040
 ldrh	r2,[r0]
 ldrh	r3,[r0,#2]
 add	r0,#4

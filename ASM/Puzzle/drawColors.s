@@ -10,8 +10,10 @@ mov	r7,r0
 ldr	r0,=bgTilemapsBuffer
 ldr	r0,[r0]
 mov	r1,r0
+mov	r3,#0xFF
 findTileLoop:
 ldrh	r2,[r1]
+and	r2,r3
 cmp	r2,#0x12
 beq	stopTileLoop
 add	r1,#2
@@ -53,17 +55,19 @@ sub	r4,r0
 ldr	r0,=bgTilemapsBuffer
 ldr	r0,[r0]
 add	r4,r0
-mov	r0,#0x1C
+ldr	r0,=#0x201C
 strh	r0,[r4]
 add	r4,#2
 lsl	r1,r7,#1
 ldrh	r0,[r4,r1]
+mov	r3,#0xFF
+and	r0,r3
 cmp	r0,#0x11
 beq	borderR
-mov	r0,#0x1E
+ldr	r0,=#0x201E
 b	storeR
 borderR:
-mov	r0,#0x1B
+ldr	r0,=#0x201B
 storeR:
 strh	r0,[r4,r1]
 @draw the background squares the colors go in
@@ -71,7 +75,7 @@ mov	r3,#0
 ldr	r0,=#0x0200016C
 ldrb	r2,[r0]
 drawColorTilesLoop:
-mov	r0,#0x1D
+ldr	r0,=#0x201D
 cmp	r2,r3
 bne	notCurrentColorTiles
 add	r0,#2

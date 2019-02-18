@@ -6,7 +6,7 @@ SHORT 0 256
 ALIGN 4
 gridTSA:
 SHORT 0 320
-#incbin "Graphics/grid.tsa.bin"
+#incbin "Graphics/gridTiles.tsa.bin"
 
 ALIGN 4
 gridCursorIMG:

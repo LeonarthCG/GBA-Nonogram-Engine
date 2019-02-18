@@ -12,8 +12,10 @@ ldr	r5,=bgTilemapsBuffer
 ldr	r5,[r5]
 
 @find tile
+mov	r3,#0xFF
 tileFoundLoop:
 ldrh	r0,[r5]
+and	r0,r3
 cmp	r0,#5
 beq	tileFound
 add	r5,#2

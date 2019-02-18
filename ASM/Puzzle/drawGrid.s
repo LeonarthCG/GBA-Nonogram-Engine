@@ -64,11 +64,13 @@ cmp	r0,#0
 bne	noextendside
 extendside:
 ldrh	r0,[r5]
-cmp	r0,#3
+mov	r2,#0xFF
+and	r2,r0
+cmp	r2,#3
 beq	noextendside
-cmp	r0,#11
+cmp	r2,#11
 beq	noextendside
-cmp	r0,#23
+cmp	r2,#23
 beq	noextendside
 mov	r0,#0
 noextendside:
@@ -112,7 +114,9 @@ bne	noextenddown
 cmp	r4,r2
 bhi	noextenddown
 ldrh	r0,[r5]
-cmp	r0,#0x11
+mov	r6,#0xFF
+and	r6,r0
+cmp	r6,#0x11
 bls	noextenddown
 mov	r0,#0
 noextenddown:

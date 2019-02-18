@@ -6,8 +6,10 @@ push	{r4-r7}
 ldr	r0,=bgTilemapsBuffer
 ldr	r0,[r0]
 mov	r1,r0
+mov	r3,#0xFF
 findTileLoop:
 ldrh	r2,[r1]
+and	r2,r3
 cmp	r2,#0x12
 beq	stopTileLoop
 add	r1,#2
