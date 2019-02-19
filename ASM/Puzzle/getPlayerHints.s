@@ -99,6 +99,12 @@ cmp	r6,#40
 beq	endColumnHints
 b	everyColorColumn
 endColumnHints:
+@check if there is one last hint
+cmp	r1,#0
+beq	notLastHintColumn
+strb	r7,[r5]
+strb	r1,[r5,#1]
+notLastHintColumn:
 pop	{r4-r7}
 bx	lr
 
@@ -167,5 +173,11 @@ cmp	r6,#40
 beq	endRowHints
 b	everyColorRow
 endRowHints:
+@check if there is one last hint
+cmp	r1,#0
+beq	notLastHintRow
+strb	r7,[r5]
+strb	r1,[r5,#1]
+notLastHintRow:
 pop	{r4-r7}
 bx	lr

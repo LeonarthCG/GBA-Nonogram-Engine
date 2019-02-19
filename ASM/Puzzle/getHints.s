@@ -43,6 +43,10 @@ bx	r0
 
 getColumnHints:
 push	{r4-r7}
+@get height
+ldr	r4,=#0x02000160
+ldrb	r4,[r4,#3]
+mov	r8,r4
 @get source
 mov	r4,r0
 add	r4,r2		@+ row number
@@ -81,15 +85,25 @@ b	nextColorColumn
 nextColorColumn:
 add	r6,#1
 add	r4,#20
-cmp	r6,#20
+cmp	r6,r8
 beq	endColumnHints
 b	everyColorColumn
 endColumnHints:
+@check if there is one last hint
+cmp	r1,#0
+beq	notLastHintColumn
+strb	r7,[r5]
+strb	r1,[r5,#1]
+notLastHintColumn:
 pop	{r4-r7}
 bx	lr
 
 getRowHints:
 push	{r4-r7}
+@get width
+ldr	r4,=#0x02000160
+ldrb	r4,[r4,#2]
+mov	r8,r4
 @get source
 mov	r4,r0
 mov	r3,#20		@+20 for every row checked
@@ -131,9 +145,15 @@ mov	r7,#1
 b	nextColorRow
 nextColorRow:
 add	r6,#1
-cmp	r6,#20
+cmp	r6,r8
 beq	endRowHints
 b	everyColorRow
 endRowHints:
+@check if there is one last hint
+cmp	r1,#0
+beq	notLastHintRow
+strb	r7,[r5]
+strb	r1,[r5,#1]
+notLastHintRow:
 pop	{r4-r7}
 bx	lr

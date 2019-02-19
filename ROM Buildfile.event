@@ -41,10 +41,26 @@ WORD $0600F800
 
 ALIGN 4
 puzzletest:
-SHORT 9 9
-POIN puzzletestpuzzle
-POIN puzzletestpalette
-POIN gridPALGreen
+SHORT 9 9		//puzzle width and height
+POIN puzzletestpuzzle	//data for the puzzle
+POIN puzzletestpalette	//palette for the puzzle
+POIN gridPALGreen	//palette for the grid
+POIN backgroundStriped1IMG //graphics for the background
+POIN backgroundStriped1PALGreen //palette for the background
+SHORT -16 //backgound horizontal speed (this is divided by 128)
+SHORT 0 //reserved
+
+ALIGN 4
+puzzletest2:
+SHORT 10 15		//puzzle width and height
+POIN puzzletestpuzzle2	//data for the puzzle
+POIN puzzletestpalette2	//palette for the puzzle
+POIN gridPALBlue	//palette for the grid
+POIN backgroundTrianglesIMG //graphics for the background
+POIN backgroundTrianglesPALBlue //palette for the background
+SHORT 16 //backgound horizontal speed (this is divided by 128)
+SHORT 0 //reserved
+
 
 ALIGN 4
 puzzletestpuzzle:
@@ -54,3 +70,12 @@ ALIGN 4
 puzzletestpalette:
 SHORT 0 8
 #incbin "Puzzles/test.pal.bin"
+
+ALIGN 4
+puzzletestpuzzle2:
+#incbin "Puzzles/test2.img.bin"
+
+ALIGN 4
+puzzletestpalette2:
+SHORT 0 8
+#incbin "Puzzles/test2.pal.bin"

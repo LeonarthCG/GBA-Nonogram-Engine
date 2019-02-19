@@ -62,15 +62,17 @@
 0200016D  Byte  Number of Colors
 0200016E  Byte  Current Cursor Action
 0200016F  Byte  Current Cursor Action Color (color that was active when action was changed)
+02000170  Short Background 3 horizontal speed
+02000172  Short Background 3 horizontal position
 
-02000200  List  Hint data (rows)
+02000200  List  Hint data (columns)
                 20 bytes for every row, 1 byte color 1 byte size
-02000400  List  Hint data (columns)
+02000400  List  Hint data (rows)
                 20 bytes for every column, 1 byte color 1 byte size
 		
-02000600  List  Player Hint data (rows)
+02000600  List  Player Hint data (columns)
                 20 bytes for every row, 1 byte color 1 byte size
-02000800  List  Player Hint data (columns)
+02000800  List  Player Hint data (rows)
                 20 bytes for every column, 1 byte color 1 byte size
 
 02000A00  List  Player data

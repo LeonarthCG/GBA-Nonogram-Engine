@@ -40,7 +40,7 @@ ldr	r1,=#0x1D01
 strh	r1,[r0,#10]	@set the offset for the bg map 1
 ldr	r1,=#0x1E01
 strh	r1,[r0,#12]	@set the offset for the bg map 2
-ldr	r1,=#0x1F00
+ldr	r1,=#0x1F0B
 strh	r1,[r0,#14]	@set the offset for the bg map 3
 
 @prepare seconds timer (timer 3)
@@ -49,13 +49,5 @@ ldr	r1,=#-0x4000
 strh	r1,[r0,#0xC]
 mov	r1,#0xC3
 strh	r1,[r0,#0xE]
-
-@change background starting tile block
-ldr	r0,=#0x04000000
-mov	r1,#0x08
-@strb	r1,[r0,#8]
-@strb	r1,[r0,#10]
-@strb	r1,[r0,#12]
-strb	r1,[r0,#14]
 
 bl	testPuzzle

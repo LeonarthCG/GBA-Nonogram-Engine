@@ -73,6 +73,35 @@ ldrh	r3,[r0,#2]
 add	r0,#4
 bl	loadData
 
+@draw the background
+ldr	r0,[r4,#16]
+ldr	r1,=#0x06008000
+ldrh	r2,[r0]
+ldrh	r3,[r0,#2]
+add	r0,#4
+bl	loadData
+ldr	r0,[r4,#20]
+ldr	r1,=#0x05000000
+ldrh	r2,[r0]
+ldrh	r3,[r0,#2]
+add	r0,#4
+bl	loadData
+ldr	r0,=bgTilemapsBuffer
+ldr	r0,[r0,#12]
+mov	r1,#0
+ldr	r2,=#640
+bgloop:
+strh	r1,[r0]
+add	r0,#2
+add	r1,#1
+cmp	r1,r2
+blo	bgloop
+ldr	r0,=#0x02000160
+ldrh	r1,[r4,#24]
+strh	r1,[r0,#0x10]
+mov	r1,#0
+strh	r1,[r0,#0x12]
+
 @load the data for the puzzle
 mov	r0,r4
 bl	loadPuzzle
@@ -114,6 +143,15 @@ str	r1,[r0,#4]
 
 @draws/updates the timer
 bl	drawTimer
+
+@start timer
+ldr	r0,=#0x04000100
+mov	r1,#0
+strh	r1,[r0,#0xE]
+ldr	r1,=#-0x4000
+strh	r1,[r0,#0xC]
+mov	r1,#0xC3
+strh	r1,[r0,#0xE]
 
 @start fade
 bl	fadeIn
@@ -168,10 +206,6 @@ bne	win
 
 swi	#5
 b	Main
-
-pop	{r4-r7}
-pop	{r0}
-bx	r0
 
 win:
 @stop timer
@@ -252,6 +286,6 @@ swi	#5
 swi	#5
 swi	#5
 bl	fadeOut
-winloop:
-swi	#5
-b	winloop
+pop	{r4-r7}
+pop	{r0}
+bx	r0

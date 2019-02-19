@@ -150,6 +150,15 @@ add	r7,#4
 lsl	r6,#1
 cmp	r6,r5
 bls	keyInputLoop
+@move background 3
+ldr	r0,=#0x02000160
+ldrh	r1,[r0,#0x10]
+ldrh	r2,[r0,#0x12]
+add	r2,r1
+ldr	r1,=#0x0400001C
+strh	r2,[r0,#0x12]
+lsr	r2,#7
+strh	r2,[r1]
 pop	{r4-r7}
 b	End
 

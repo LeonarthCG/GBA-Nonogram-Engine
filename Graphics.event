@@ -27,3 +27,28 @@ ALIGN 4
 gridPALGreen:
 SHORT 0 8
 #incbin "Graphics/gridTilesGreen.pal.bin"
+
+ALIGN 4
+gridPALBlue:
+SHORT 0 8
+#incbin "Graphics/gridTilesBlue.pal.bin"
+
+ALIGN 4
+backgroundStriped1IMG:
+SHORT 0 5120
+#incbin "Graphics/backgroundStriped1.img.bin"
+
+ALIGN 4
+backgroundStriped1PALGreen:
+SHORT 0 8
+#incbin "Graphics/backgroundStriped1Green.pal.bin"
+
+ALIGN 4
+backgroundTrianglesIMG:
+SHORT 0 5120
+#incbin "Graphics/backgroundTriangles.img.bin"
+
+ALIGN 4
+backgroundTrianglesPALBlue:
+SHORT 0 8
+#incbin "Graphics/backgroundTrianglesBlue.pal.bin"

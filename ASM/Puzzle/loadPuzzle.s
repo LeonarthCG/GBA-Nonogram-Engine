@@ -51,17 +51,18 @@ cmp	r2,r6
 beq	nextRow
 b	everyColumn
 nextRow:
+doneRow:
 mov	r3,#1
 and	r3,r2
 cmp	r3,#0
 beq	dontadd1
 add	r4,#1
 dontadd1:
-mov	r3,#7
-and	r3,r2
+ldrb	r3,[r4]
 cmp	r3,#0
-beq	dontadd2
+bne	dontadd2
 add	r4,#1
+b	dontadd1
 dontadd2:
 add	r5,#20
 add	r1,#1
